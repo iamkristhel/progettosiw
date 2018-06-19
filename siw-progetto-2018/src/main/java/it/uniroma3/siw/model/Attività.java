@@ -3,8 +3,10 @@ package it.uniroma3.siw.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +31,7 @@ public class Attività {
 	@Temporal(TemporalType.TIME)
 	private Date orario;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	private List<Allievo> listaPartecipanti;
 	
 	@ManyToOne
